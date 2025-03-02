@@ -1,10 +1,11 @@
+#include <iostream>
 #include "Engine/DigitalEngine.h"
 #include "Graphics/EngineGraphicsAPI.h"
-#include <iostream>
 
 DigitalEngine::DigitalEngine()
 :   EngineName("Digital Engine"),
-    bIsEngineRunning(false)
+    bIsEngineRunning(false),
+    DigitalEditorPtr(nullptr)
 {
     
 }
@@ -12,10 +13,15 @@ DigitalEngine::DigitalEngine()
 void DigitalEngine::Init()
 {
     std::cout << "Starting Digital Engine\n";
-
-    GraphicsAPI::InitializeGraphicsFramework();
     
-    bIsEngineRunning = true; 
+    if(!GraphicsAPI::InitializeGraphicsFramework())
+        return;
+
+    DigitalEditorPtr = std::make_unique<DigitalEditor>();
+
+    DigitalEditorPtr->StartEditor(); 
+        
+    bIsEngineRunning = true;    
 }
 
 void DigitalEngine::Tick()
@@ -23,10 +29,18 @@ void DigitalEngine::Tick()
     while(bIsEngineRunning)
     {
         std::cout << "Engine Ticking\n";
+        DigitalEditorPtr->Tick(); 
     }
 }
 
 void DigitalEngine::End()
 {
     std::cout << "Shutting down Digital Engine\n";
+}
+
+void DigitalEngine::InitEditor()
+{
+    DigitalEditorPtr = std::make_unique<DigitalEditor>();
+
+    DigitalEditorPtr->StartEditor();
 }

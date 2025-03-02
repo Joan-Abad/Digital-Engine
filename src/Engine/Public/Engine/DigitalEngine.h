@@ -1,4 +1,7 @@
 #pragma once
+#include <memory>
+
+#include "DigitalEditor/DigitalEditor.h"
 
 class DigitalEngine
 {
@@ -18,10 +21,15 @@ public:
     void End();
 
 private:
+
+    //Initialize all the engine editor
+    void InitEditor();
     
     //The name of the engine used by the editor
     const char* EngineName;
     
     //Keeps track if the engine is running. If false the engine will close
-    bool bIsEngineRunning; 
+    bool bIsEngineRunning;
+
+    std::unique_ptr<DigitalEditor> DigitalEditorPtr; 
 };

@@ -1,11 +1,45 @@
 #pragma once
+#include "GLFW/glfw3.h"
+
+struct WindowParameters
+{
+    WindowParameters(const char* WindowName, int Width, int Height)
+    {
+        this->WindowName = WindowName;
+        this->Width = Width;
+        this->Height = Height; 
+    }
+
+    //The name that will be displayed up the window
+    const char* WindowName;
+
+    //Width of the window
+    int Width;
+
+    //Height of the window
+    int Height; 
+};
 
 class Window
 {
 public:
     
-    Window();
+    Window(const WindowParameters& WindowCreationParams);
+
+    virtual void InitializeWindow();
+
+    virtual void Update();
+
+    virtual void UpdateInput();
+
+    virtual void Draw();
+
+    virtual void CloseWindow();
+
+    virtual bool ShouldCloseWindow();
 
 private:
-    const char* WindowName;
+    WindowParameters WindowParams;
+
+    GLFWwindow* window; 
 };
