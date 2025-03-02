@@ -14,14 +14,26 @@ file(GLOB_RECURSE SOURCES "src/**/*.cpp" "src/**/*.h")
 list(APPEND SOURCES "src/main.cpp")
 
 # Find all 'Public' directories and add them to the include path
-file(GLOB_RECURSE PUBLIC_DIRS LIST_DIRECTORIES true "src/*/Public")
+file(GLOB_RECURSE PUBLIC_DIRS LIST_DIRECTORIES true "src/*/Public/")
 
+# Add executable for the DigitalEngine target
+add_executable(DigitalEngine ${SOURCES})
+
+# Add GLFW as a subdirectory
+add_subdirectory(third_party/glfw)
+
+# Add all 'Public' directories to the include path
 foreach(PUBLIC_DIR ${PUBLIC_DIRS})
-    include_directories(${PUBLIC_DIR})
+    target_include_directories(DigitalEngine PRIVATE ${PUBLIC_DIR})
 endforeach()
 
-# Add executable
-add_executable(DigitalEngine ${SOURCES})
+# Linking process
+target_link_libraries(DigitalEngine glfw)
+
+target_link_libraries(DigitalEngine glfw OpenGL32)
+
+# Ensure GLFW include path is added
+target_include_directories(DigitalEngine PRIVATE third_party/glfw/include)
 
 # Maintain the folder structure in Visual Studio
 foreach(FILE ${SOURCES})
@@ -36,6 +48,5 @@ foreach(FILE ${SOURCES})
 endforeach()
 
 # Optionally exclude 'ALL_BUILD' and 'ZERO_CHECK' from Visual Studio Solution Explorer
-# If you want to use this solution, you can remove 'ALL_BUILD' and 'ZERO_CHECK' manually from Visual Studio after the project is generated
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT My3DEngine)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT DigitalEngine)
 

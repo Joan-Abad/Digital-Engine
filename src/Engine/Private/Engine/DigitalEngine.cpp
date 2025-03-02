@@ -1,4 +1,5 @@
-#include "DigitalEngine.h"
+#include "Engine/DigitalEngine.h"
+#include "Graphics/EngineGraphicsAPI.h"
 #include <iostream>
 
 DigitalEngine::DigitalEngine()
@@ -11,6 +12,9 @@ DigitalEngine::DigitalEngine()
 void DigitalEngine::Init()
 {
     std::cout << "Starting Digital Engine\n";
+
+    GraphicsAPI::InitializeGraphicsFramework();
+    
     bIsEngineRunning = true; 
 }
 
