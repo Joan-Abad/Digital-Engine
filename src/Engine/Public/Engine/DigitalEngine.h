@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "DigitalEditor/DigitalEditor.h"
+#include "EditorInput/EditorInput.h"
 
 class DigitalEngine
 {
@@ -31,5 +32,5 @@ private:
     //Keeps track if the engine is running. If false the engine will close
     bool bIsEngineRunning;
 
-    std::unique_ptr<DigitalEditor> DigitalEditorPtr; 
+    std::unique_ptr<DigitalEditor> DigitalEditorPtr;
 };

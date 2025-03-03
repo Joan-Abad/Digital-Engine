@@ -1,4 +1,5 @@
 #include "DigitalEditor.h"
+#include "EditorInput/EditorInput.h"
 
 DigitalEditor::DigitalEditor()
 {
@@ -13,7 +14,9 @@ void DigitalEditor::Tick()
 bool DigitalEditor::StartEditor()
 {
     WindowParameters window_parameters ("Digital Engine", 1920, 1080);
-        
+
+    EditorInputPtr = std::make_unique<EditorInput>();
+    
     MainEditorWindow = WindowManagerPtr->CreateWindow(window_parameters);
 
     if(!MainEditorWindow)

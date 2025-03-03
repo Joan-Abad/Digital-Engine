@@ -40,8 +40,7 @@ void Window::Update()
 
 void Window::UpdateInput()
 {
-    // Poll events
-    glfwPollEvents();
+    
 }
 
 void Window::Draw()
