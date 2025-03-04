@@ -4,20 +4,23 @@
 DigitalEditor::DigitalEditor()
 {
     WindowManagerPtr = std::make_unique<WindowManager>();
+    EditorInputPtr = std::make_unique<EditorInput>();
+    
 }
 
 void DigitalEditor::Tick()
 {
+    EditorInputPtr->Update(); 
     WindowManagerPtr->Update(); 
 }
 
 bool DigitalEditor::StartEditor()
 {
     WindowParameters window_parameters ("Digital Engine", 1920, 1080);
-
-    EditorInputPtr = std::make_unique<EditorInput>();
     
     MainEditorWindow = WindowManagerPtr->CreateWindow(window_parameters);
+
+    EditorInput::SetFocusedWindow(MainEditorWindow); 
 
     if(!MainEditorWindow)
         return false;

@@ -28,19 +28,10 @@ void Window::InitializeWindow()
 void Window::Update()
 {
     // Main loop
-    while (!ShouldCloseWindow()) {
-
-        UpdateInput();
-
-        Draw();        
-    }
-
-    CloseWindow();
-}
-
-void Window::UpdateInput()
-{
-    
+    if(!ShouldCloseWindow())
+        Draw();     
+    else
+        CloseWindow();
 }
 
 void Window::Draw()
@@ -61,4 +52,8 @@ void Window::CloseWindow()
 bool Window::ShouldCloseWindow()
 {
     return glfwWindowShouldClose(window);
+}
+
+void Window::PullInputEvents()
+{
 }

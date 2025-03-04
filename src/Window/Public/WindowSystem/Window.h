@@ -30,14 +30,17 @@ public:
 
     virtual void Update();
 
-    virtual void UpdateInput();
-
     virtual void Draw();
 
     virtual void CloseWindow();
 
     virtual bool ShouldCloseWindow();
 
+    virtual void PullInputEvents();
+
+    //Gets the API window, in this case glfw
+    GLFWwindow* GetWindow() { return window; }
+    
 private:
     WindowParameters WindowParams;
 
