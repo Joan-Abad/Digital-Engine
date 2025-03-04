@@ -28,3 +28,14 @@ bool DigitalEditor::StartEditor()
     return true; 
      
 }
+
+bool DigitalEditor::ShouldCloseEditor()
+{
+    return MainEditorWindow->ShouldCloseWindow(); 
+}
+
+void DigitalEditor::CloseEditor()
+{
+    glfwDestroyWindow(MainEditorWindow->GetWindow());
+    glfwTerminate();
+}

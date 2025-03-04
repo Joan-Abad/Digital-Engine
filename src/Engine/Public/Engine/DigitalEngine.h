@@ -4,6 +4,8 @@
 #include "DigitalEditor/DigitalEditor.h"
 #include "EditorInput/EditorInput.h"
 
+
+
 class DigitalEngine
 {
 public:
@@ -20,6 +22,8 @@ public:
 
     //Used to clean all the engine resources
     void End();
+
+    bool ShouldCloseEditor();
 
 private:
 

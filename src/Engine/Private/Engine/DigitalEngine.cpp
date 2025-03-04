@@ -25,8 +25,8 @@ void DigitalEngine::Init()
 }
 
 void DigitalEngine::Tick()
-{
-    while(bIsEngineRunning)
+{ 
+    while(!ShouldCloseEditor())
     {
         std::cout << "Engine Ticking\n";
         DigitalEditorPtr->Tick(); 
@@ -35,7 +35,13 @@ void DigitalEngine::Tick()
 
 void DigitalEngine::End()
 {
+    DigitalEditorPtr->CloseEditor(); 
     std::cout << "Shutting down Digital Engine\n";
+}
+
+bool DigitalEngine::ShouldCloseEditor()
+{
+    return DigitalEditorPtr->ShouldCloseEditor(); 
 }
 
 void DigitalEngine::InitEditor()

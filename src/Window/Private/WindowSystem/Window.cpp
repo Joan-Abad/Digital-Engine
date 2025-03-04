@@ -28,10 +28,7 @@ void Window::InitializeWindow()
 void Window::Update()
 {
     // Main loop
-    if(!ShouldCloseWindow())
-        Draw();     
-    else
-        CloseWindow();
+        Draw();
 }
 
 void Window::Draw()
@@ -52,8 +49,4 @@ void Window::CloseWindow()
 bool Window::ShouldCloseWindow()
 {
     return glfwWindowShouldClose(window);
-}
-
-void Window::PullInputEvents()
-{
 }

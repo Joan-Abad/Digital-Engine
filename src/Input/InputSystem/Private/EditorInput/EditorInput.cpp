@@ -26,11 +26,17 @@ void EditorInput::Update()
 
 bool EditorInput::IsKeyPressed(EKey Key)
 {
+    if(!FocusedWindow)
+        return false;
+    
     return glfwGetKey(FocusedWindow->GetWindow(), static_cast<int>(Key)) == static_cast<int>(EKeyState::KEY_Pressed);        
 }
 
 bool EditorInput::IsKeyReleased(EKey Key)
 {
+    if(!FocusedWindow)
+        return false;
+    
     return glfwGetKey(FocusedWindow->GetWindow(), static_cast<int>(Key)) == static_cast<int>(EKeyState::Key_Released);        
 }
 

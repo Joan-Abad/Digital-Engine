@@ -36,10 +36,8 @@ public:
 
     virtual bool ShouldCloseWindow();
 
-    virtual void PullInputEvents();
-
     //Gets the API window, in this case glfw
-    GLFWwindow* GetWindow() { return window; }
+    GLFWwindow* GetWindow() const { return window; }
     
 private:
     WindowParameters WindowParams;

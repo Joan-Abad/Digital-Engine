@@ -15,7 +15,11 @@ public:
     //Start all the editor part of the engine
     bool StartEditor();
 
-    
+    //If true, will indicate the engine to close editor
+    bool ShouldCloseEditor();
+
+    //Closes Digital Editor
+    void CloseEditor();
 
 private:
 
