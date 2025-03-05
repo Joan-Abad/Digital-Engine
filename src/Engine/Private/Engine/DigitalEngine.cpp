@@ -1,11 +1,11 @@
 #include <iostream>
 #include "Engine/DigitalEngine.h"
-#include "Graphics/EngineGraphicsAPI.h"
+#include "Graphics/Renderer.h"
 
 DigitalEngine::DigitalEngine()
 :   EngineName("Digital Engine"),
-    bIsEngineRunning(false),
-    DigitalEditorPtr(nullptr)
+    DigitalEditorPtr(nullptr),
+    CurrentGraphicsAPI(Graphics_API::OpenGL)
 {
     
 }
@@ -13,15 +13,8 @@ DigitalEngine::DigitalEngine()
 void DigitalEngine::Init()
 {
     std::cout << "Starting Digital Engine\n";
-    
-    if(!GraphicsAPI::InitializeGraphicsFramework())
-        return;
 
-    DigitalEditorPtr = std::make_unique<DigitalEditor>();
-
-    DigitalEditorPtr->StartEditor(); 
-        
-    bIsEngineRunning = true;    
+    InitializeEditor();
 }
 
 void DigitalEngine::Tick()
@@ -44,9 +37,17 @@ bool DigitalEngine::ShouldCloseEditor()
     return DigitalEditorPtr->ShouldCloseEditor(); 
 }
 
-void DigitalEngine::InitEditor()
+void DigitalEngine::InitializeEditor()
 {
-    DigitalEditorPtr = std::make_unique<DigitalEditor>();
 
+    InitializeRenderer();
+    
+    DigitalEditorPtr = std::make_unique<DigitalEditor>();
     DigitalEditorPtr->StartEditor();
+}
+
+void DigitalEngine::InitializeRenderer()
+{
+    DigitalRendererPtr = Renderer::CreateRenderer(CurrentGraphicsAPI);
+    DigitalRendererPtr->Init(); 
 }

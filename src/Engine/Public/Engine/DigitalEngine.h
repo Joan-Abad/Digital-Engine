@@ -1,10 +1,12 @@
 #pragma once
 #include <memory>
 
+#include "Renderer.h"
 #include "DigitalEditor/DigitalEditor.h"
 #include "EditorInput/EditorInput.h"
 
 
+class Renderer;
 
 class DigitalEngine
 {
@@ -12,7 +14,7 @@ public:
     DigitalEngine();
 
     //Gets the name of the engine that is used all around the editor
-    const char* GetEngineName(){ return EngineName; }
+    const char* GetEngineName() const { return EngineName; }
 
     //Called to initialize the engine
     void Init();
@@ -23,18 +25,26 @@ public:
     //Used to clean all the engine resources
     void End();
 
+    //Manages how the engine and editor is closed
     bool ShouldCloseEditor();
 
 private:
 
     //Initialize all the engine editor
-    void InitEditor();
+    void InitializeEditor();
+
+    //Initialize the renderer in the correct API
+    void InitializeRenderer();
     
     //The name of the engine used by the editor
     const char* EngineName;
-    
-    //Keeps track if the engine is running. If false the engine will close
-    bool bIsEngineRunning;
 
+    //Manages the editor
     std::unique_ptr<DigitalEditor> DigitalEditorPtr;
+
+    //Manages the rending part of the editor
+    std::shared_ptr<Renderer> DigitalRendererPtr;
+
+    //The Grraphics API the engine is using to render everything
+    Graphics_API CurrentGraphicsAPI; 
 };
