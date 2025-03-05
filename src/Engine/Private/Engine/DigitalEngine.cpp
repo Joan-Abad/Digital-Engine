@@ -14,7 +14,9 @@ void DigitalEngine::Init()
 {
     std::cout << "Starting Digital Engine\n";
 
+    InitializeRenderer();
     InitializeEditor();
+    PostInitializeRenderer();
 }
 
 void DigitalEngine::Tick()
@@ -39,9 +41,6 @@ bool DigitalEngine::ShouldCloseEditor()
 
 void DigitalEngine::InitializeEditor()
 {
-
-    InitializeRenderer();
-    
     DigitalEditorPtr = std::make_unique<DigitalEditor>();
     DigitalEditorPtr->StartEditor();
 }
@@ -50,4 +49,9 @@ void DigitalEngine::InitializeRenderer()
 {
     DigitalRendererPtr = Renderer::CreateRenderer(CurrentGraphicsAPI);
     DigitalRendererPtr->Init(); 
+}
+
+void DigitalEngine::PostInitializeRenderer()
+{
+    DigitalRendererPtr->PostInitialize(); 
 }

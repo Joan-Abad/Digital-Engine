@@ -1,4 +1,5 @@
 #include "WindowSystem/Window.h"
+#include "Globals.h"
 #include <iostream>
 
 Window::Window(const WindowParameters& WindowCreationParams)
@@ -11,17 +12,16 @@ void Window::InitializeWindow()
 {
     window = glfwCreateWindow(WindowParams.Width, WindowParams.Height, WindowParams.WindowName, nullptr, nullptr);
 
-    if(!window)
-    {
-        std::cerr << "Failed to create GLFW window!" << std::endl;
-        glfwTerminate();
-        return;
-    }
+   if(!window)
+   {
+       std::cerr << "Window could not be initialized correctly\n";
+       return; 
+   }
 
-    // Make the window's context current
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
-
+    if(const std::shared_ptr<Renderer> Renderer = DigitalEngine->GetRenderer())
+        Renderer->MakeContextCurrent(this);
+    else
+        std::cerr << "Could not find the Renderer inside Window::InitializeWindow\n";
     
 }
 

@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_SUPPRESS_REGENERATION TRUE)
 
 # Collect all source files
-file(GLOB_RECURSE SOURCES "src/**/*.cpp" "src/**/*.h")
+file(GLOB_RECURSE SOURCES "src/**/*.cpp" "src/**/*.h" "src/**/*.c")
 
 # Explicitly add main.cpp to ensure it's included in the build
 list(APPEND SOURCES "src/main.cpp")

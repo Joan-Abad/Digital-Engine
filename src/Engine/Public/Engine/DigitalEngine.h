@@ -28,6 +28,9 @@ public:
     //Manages how the engine and editor is closed
     bool ShouldCloseEditor();
 
+    
+    const std::shared_ptr<Renderer>& GetRenderer() const { return DigitalRendererPtr; }
+
 private:
 
     //Initialize all the engine editor
@@ -35,6 +38,9 @@ private:
 
     //Initialize the renderer in the correct API
     void InitializeRenderer();
+
+    //Post initialize renderer in the correct API
+    void PostInitializeRenderer();
     
     //The name of the engine used by the editor
     const char* EngineName;
