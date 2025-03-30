@@ -1,3 +1,9 @@
 [submodule "third_party/glfw"]
 	path = third_party/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "third_party/externals/LogMeCPP"]
+	path = third_party/externals/LogMeCPP
+	url = https://github.com/Joan-Abad/LogMeCPP
+[submodule "third_party/externals/DigitalMath"]
+	path = third_party/externals/DigitalMath
+	url = https://github.com/Joan-Abad/DigitalMath
