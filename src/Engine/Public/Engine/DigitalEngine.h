@@ -22,6 +22,9 @@ public:
     //Used to update each tick the engine
     void Tick();
 
+    //Event to clear and reset everything at the end of each tick
+    void PostTick(); 
+
     //Used to clean all the engine resources
     void End();
 

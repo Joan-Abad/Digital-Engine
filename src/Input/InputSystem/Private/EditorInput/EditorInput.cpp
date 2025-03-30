@@ -16,11 +16,11 @@ void EditorInput::Update()
 
     if(IsKeyPressed(EKey::A))
     {
-        std::cout << "KEY A PRESSED\n"; 
+       //std::cout << "KEY A PRESSED\n"; 
     }
     else if(IsKeyReleased(EKey::A))
     {
-        std::cout << "KEY A Released\n";
+        //std::cout << "KEY A Released\n";
     }
 }
 

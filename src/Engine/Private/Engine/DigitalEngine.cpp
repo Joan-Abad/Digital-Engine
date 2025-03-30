@@ -20,12 +20,21 @@ void DigitalEngine::Init()
 }
 
 void DigitalEngine::Tick()
-{ 
+{
+    std::cout << "Start Engine Ticking" << '\n';
+
     while(!ShouldCloseEditor())
     {
-        std::cout << "Engine Ticking\n";
-        DigitalEditorPtr->Tick(); 
+        DigitalEditorPtr->Tick();
+        PostTick();
     }
+}
+
+void DigitalEngine::PostTick()
+{
+    //Flush at the end of the drame for logging.
+    //TODO: Not sure if we should check if there is any character to flush ot it does it automatically.  
+    std::cout << std::flush; 
 }
 
 void DigitalEngine::End()

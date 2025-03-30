@@ -48,8 +48,8 @@ enum class EKey {
     Y = 89,
     Z = 90,
     LEFT_BRACKET = 91,  // [
-    BACKSLASH = 92,     // \
-    RIGHT_BRACKET = 93, // ]
+    BACKSLASH = 92,     
+    RIGHT_BRACKET = 93, 
     GRAVE_ACCENT = 96,  // `
     WORLD_1 = 161,      // non-US #1
     WORLD_2 = 162,      // non-US #2
