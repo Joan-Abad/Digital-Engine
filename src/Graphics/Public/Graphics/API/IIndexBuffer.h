@@ -19,4 +19,3 @@ public:
 protected:
     uint32_t Count = 0;
 };
-#pragma once

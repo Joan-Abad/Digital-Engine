@@ -8,9 +8,6 @@ int main() {
 
     DigitalEngine = std::make_unique<class DigitalEngine>(); 
 
-    Vector2 vec(10, 20); 
-    std::cout << "Vec2: " << vec << std::endl;
-
     DigitalEngine->Init();
     DigitalEngine->Tick();
     DigitalEngine->End();
