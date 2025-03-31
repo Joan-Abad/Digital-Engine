@@ -4,6 +4,7 @@
 class OpenGLIndexBuffer : public IIndexBuffer 
 {
 public:
+    
     virtual ~OpenGLIndexBuffer() = default;
 
     // Bind the index buffer (required before drawing)

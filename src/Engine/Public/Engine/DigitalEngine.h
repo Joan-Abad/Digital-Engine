@@ -31,6 +31,7 @@ public:
     //Manages how the engine and editor is closed
     bool ShouldCloseEditor();
 
+    Graphics_API GetCurrentGraphicsAPI() const { return CurrentGraphicsAPI; }
     
     const std::shared_ptr<Renderer>& GetRenderer() const { return DigitalRendererPtr; }
 
