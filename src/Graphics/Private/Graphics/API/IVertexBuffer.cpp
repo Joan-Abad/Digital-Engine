@@ -8,14 +8,14 @@ IVertexBuffer::IVertexBuffer()
     
 }
 
-std::unique_ptr<IVertexBuffer> IVertexBuffer::Create(size_t size, const void* data)
+std::unique_ptr<IVertexBuffer> IVertexBuffer::Create(const void* vertices, size_t size)
 {
     switch(DigitalEngine->GetCurrentGraphicsAPI())
     {
     case Graphics_API::DirectX:
         return nullptr; //Implement
     case Graphics_API::OpenGL:
-        return std::make_unique<OpenGLVertexBuffer>(size, data);
+        return std::make_unique<OpenGLVertexBuffer>(vertices, size);
     }
     
     return nullptr; 

@@ -30,12 +30,15 @@ std::shared_ptr<ITexture> OpenGLGraphicsDevice::CreateTexture(const std::string&
 
 void OpenGLGraphicsDevice::SetViewport(int width, int height)
 {
+    
 }
 
 void OpenGLGraphicsDevice::Clear(float r, float g, float b, float a)
 {
+    
 }
 
 void OpenGLGraphicsDevice::Present()
 {
+    
 }
